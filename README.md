@@ -31,6 +31,7 @@ The project avoids storing or exposing sensitive information. No API keys, passw
 ## Ops
 The application logs basic information for debugging, such as incoming requests and prediction outcomes. Scaling considerations include running multiple Docker containers behind a load balancer if needed, though this project is intended for local or small-scale use. Known limitations include potential bias in predictions due to the dataset size and class distribution, and lack of advanced monitoring or alerting. Future improvements could add structured logging, metrics collection, and automated testing for operational reliability.
 # Results & Evaluation
-![Results Example](Ryan Bias-detector examples.png)
+![Bias Detector Examples](assets/RyanBias-DetectorExamples.png)
+
 
 

@@ -35,7 +35,10 @@ The application logs basic information for debugging, such as incoming requests 
 
 This shows the headlines of three of my articles that I've written for The Cavalier Daily, one balanced, one provocative, and one partisan. 
 I inputted each of these into the model, and it outputted the results shown above for each one, which i think are mostly accurate. The top one is a sports-angled article that is not really partisan and not as provocative as it is balanced, and the model correctly identified that it was balanced, with provocative being the second most likely option. The middle one is an article I did on homelessness, where the title, "Charlottesville needs to embrace a comprehensive solution to homelessness", leaves readers wondering what this solution should be, so it is a provocative headline, which the model correctly identified. The bottom headline is an article that explains how the university should defend against actions from the federal government, and the model correctly identified it as partisan
-
-
-
-
+# What's Next
+While the current Bias Detector demonstrates the core pipeline, several improvements and extensions are possible and could be done in the future:
+- Model Improvements: Experiment with larger datasets, different text embeddings, or more advanced classifiers to improve accuracy and reduce misclassifications.
+- Expanded Labels: Introduce finer-grained bias categories or multi-label predictions for nuanced articles.
+- User Interface: Build a simple web front-end for users to input headlines without using curl or terminal commands.
+- Deployment: Deploy to cloud services (AWS, GCP, or Heroku) for public access and continuous integration.
+- Testing & Validation: Implement automated tests, input validation, and more extensive edge-case handling.

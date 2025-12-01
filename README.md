@@ -32,8 +32,10 @@ The project avoids storing or exposing sensitive information. No API keys, passw
 The application logs basic information for debugging, such as incoming requests and prediction outcomes. Scaling considerations include running multiple Docker containers behind a load balancer if needed, though this project is intended for local or small-scale use. Known limitations include potential bias in predictions due to the dataset size and class distribution, and lack of advanced monitoring or alerting. Future improvements could add structured logging, metrics collection, and automated testing for operational reliability.
 # Results & Evaluation
 ![Bias Detector Examples](assets/RyanBias-DetectorExamples.png)
+
 This shows the headlines of three of my articles that I've written for The Cavalier Daily, one balanced, one provocative, and one partisan. 
 I inputted each of these into the model, and it outputted the results shown above for each one, which i think are mostly accurate. The top one is a sports-angled article that is not really partisan and not as provocative as it is balanced, and the model correctly identified that it was balanced, with provocative being the second most likely option. The middle one is an article I did on homelessness, where the title, "Charlottesville needs to embrace a comprehensive solution to homelessness", leaves readers wondering what this solution should be, so it is a provocative headline, which the model correctly identified. The bottom headline is an article that explains how the university should defend against actions from the federal government, and the model correctly identified it as partisan
+
 
 
 

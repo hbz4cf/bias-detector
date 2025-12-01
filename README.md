@@ -40,4 +40,7 @@ While the current Bias Detector demonstrates the core pipeline, several improvem
 - Model Improvements: Experiment with larger datasets, different text embeddings, or more advanced classifiers to improve accuracy and reduce misclassifications.
 - Expanded Labels: Introduce finer-grained bias categories or multi-label predictions for nuanced articles.
 - User Interface: Build a simple web front-end for users to input headlines without using curl or terminal commands.
+# Links
+Github Repo: https://github.com/hbz4cf/bias-detector
+
 

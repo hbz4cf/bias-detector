@@ -4,5 +4,6 @@ As an opinion editor for UVA's newspaper, I regularly evaluate headlines not jus
 ## Course concepts
 This project demonstrates bias classification by integrating multiple course concepts: it uses a data pipeline built with pandas for dataset loading and preprocessing, a machine learning pipeline with scikit-learn (TF-IDF vectorization + Logistic Regression) for training and evaluation, and a Flask API for serving predictions. The application is fully containerized using Docker, ensuring reproducibility and easy deployment.
 ## Architecture Diagram
-
+![Architecture Diagram](assets/architecture.png.png)
 ## Data/Models/Services
+

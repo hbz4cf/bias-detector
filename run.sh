@@ -11,3 +11,5 @@ python src/pipeline.py
 # 3. Start the API
 echo "Starting Flask API on localhost:8080..."
 python src/api.py
+
+Invoke-RestMethod -Uri http://localhost:8080/predict -Method POST -ContentType "application/json" -Body '{"text":"(INSERT HEADLINE)"}'

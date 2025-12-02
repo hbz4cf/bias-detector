@@ -9,19 +9,14 @@ This project demonstrates bias classification by integrating multiple course con
 The project uses a curated opinion dataset stored in assets/opinion_dataset.csv containing 105 labeled articles for training and testing the bias classifier. The CSV is in standard text format, roughly 7 KB in size, and does not have licensing restrictions as it was created for instructional purposes. The trained model is saved as assets/model.joblib, a binary file of about 20 KB that stores the TF-IDF vectorizer and Logistic Regression classifier pipeline. The model was trained locally using Python 3.11 with scikit-learn and pandas, and it is intended for educational and demonstration purposes only. All project services, including the API in src/api.py and containerization via the Dockerfile, are open-source and rely on permissively licensed Python libraries (Flask, joblib, scikit-learn, pandas).
 # How to Run (Local)
 Run the Bias Detector locally using Docker. Make sure Docker is installed and `.env` is configured.
+
 Powershell:
 ```powershell
-Invoke-RestMethod -Uri "https://bias-detector-2.onrender.com/predict" `
--Method POST `
--ContentType "application/json" `
--Body '{"text":"The mayor is ruining our city!"}'
+Invoke-RestMethod -Uri https://bias-detector-2.onrender.com/predict -Method POST -ContentType "application/json" -Body '{"text":"The mayor is ruining our city!"}'
 ```
 Linux/macOS terminal:
 ```powershell
-Invoke-RestMethod -Uri "https://bias-detector-2.onrender.com/predict" `
--Method POST `
--ContentType "application/json" `
--Body '{"text":"The mayor is ruining our city!"}'
+curl -X POST https://bias-detector-2.onrender.com/predict -H "Content-Type: application/json" -d '{"text":"The mayor is ruining our city!"}'
 ```
 # Design Decicions
 ## Why This Concept?
@@ -46,6 +41,7 @@ While the current Bias Detector demonstrates the core pipeline, several improvem
 - User Interface: Build a simple web front-end for users to input headlines without using curl or terminal commands.
 # Links
 Github Repo: https://github.com/hbz4cf/bias-detector
+
 
 
 

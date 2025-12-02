@@ -41,7 +41,9 @@ While the current Bias Detector demonstrates the core pipeline, several improvem
 - User Interface: Build a simple web front-end for users to input headlines without using curl or terminal commands.
 # Links
 Github Repo: https://github.com/hbz4cf/bias-detector
+
 Cloud Deployment: https://bias-detector-2.onrender.com (see 'How to Run' Section for use)
+
 
 
 

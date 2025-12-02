@@ -26,6 +26,8 @@ curl -X POST http://localhost:8080/predict \
 I wanted to try to find a way to incorporate journalism into this project in some way. Some of my other ideas originally included doing a topic classifier where users inputted a title and it told you if it were a sports, news, opinion, or life article or doing a fake news detector where you inputted a headline and it outputted the likelihood of the artically being factually correct. I ended up choosing my bias detector because it seemed like the most practical, since the first option wouldn't be too useful as readers are usually already able to tell what type of article it is that they're reading, and the second option would likely not give reliable results because there are a number of confounding variables that might influence the validity of the article, such as the publication.
 ## Tradeoffs
 Choosing a bias classifier allowed for a manageable dataset and a clear ML workflow, but it comes with limitations. Using a simple TF-IDF + Logistic Regression pipeline trades off potential predictive performance for simplicity and interpretability. More complex models like transformers could improve accuracy but would increase computational cost, complexity, and deployment difficulty. Containerizing with Docker ensures reproducibility and ease of deployment, though it adds an extra step for users unfamiliar with Docker.
+## Edge Cases
+Since the model gives a weighted decimal output, headlines that don't fit into any one category are accounted for because they tend to give results that don't indicate too strong of any one type (all around .33). Potential edge cases do include empty or nonheadline responses or responses that are too long. To handle empty responses, the API returns a clear error message indicating that no text was provided. For excessively long headlines, the text is truncated to a reasonable length to prevent processing issues. Non-text input, such as numbers or HTML code, is cleaned and normalized before being passed to the model, ensuring that the API does not crash and provides a consistent prediction format. These safeguards make the service robust to unusual or unexpected input while maintaining reliable output.
 ## Security/Privacy:
 The project avoids storing or exposing sensitive information. No API keys, passwords, or PII are included; the .env.example file demonstrates environment variable usage without secrets. Input validation is minimal but ensures that only text strings are processed. Since the model only analyzes headlines or short text snippets, there is no handling of personal user data, and predictions are transient, reducing privacy risks.
 ## Ops
@@ -42,5 +44,6 @@ While the current Bias Detector demonstrates the core pipeline, several improvem
 - User Interface: Build a simple web front-end for users to input headlines without using curl or terminal commands.
 # Links
 Github Repo: https://github.com/hbz4cf/bias-detector
+
 
 

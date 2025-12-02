@@ -1,0 +1,47 @@
+name: CI Build - Bias Detector
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Build Docker image
+        run: docker build -t bias-detector:latest .
+
+      - name: Run container in background
+        run: docker run -d --name bias-detector-test -p 8080:8080 bias-detector:latest
+
+      - name: Wait for API to start
+        run: sleep 10
+
+      - name: Smoke test - Health check
+        run: |
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8080/healthz)
+          if [ "$STATUS" -ne 200 ]; then
+            echo "Health check failed with status $STATUS"
+            exit 1
+          else
+            echo "Health check passed"
+          fi
+
+      - name: Stop and remove container
+        run: docker rm -f bias-detector-test

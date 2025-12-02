@@ -34,33 +34,25 @@ The application logs basic information for debugging, such as incoming requests 
 
 This shows the headlines of three of my articles that I've written for The Cavalier Daily, one balanced, one provocative, and one partisan. 
 I inputted each of these into the model, and it outputted the results shown above for each one, which i think are mostly accurate. The top one is a sports-angled article that is not really partisan and not as provocative as it is balanced, and the model correctly identified that it was balanced, with provocative being the second most likely option. The middle one is an article I did on homelessness, where the title, "Charlottesville needs to embrace a comprehensive solution to homelessness", leaves readers wondering what this solution should be, so it is a provocative headline, which the model correctly identified. The bottom headline is an article that explains how the university should defend against actions from the federal government, and the model correctly identified it as partisan
-## Testing / Validation
-To ensure the Bias Detector works correctly, the project includes basic smoke tests, dataset checks, and minimal automated validation.
-**Smoke Tests**: Confirm the system runs end-to-end. The model pipeline can be trained without errors:
-```bash
+## Testing/validation
+**Smoke Tests**  
+Train the model pipeline and start the API:
+
+```powershell
 python src/pipeline.py
-and the API starts correctly:
-bash
-Copy code
 python src/api.py
-A sample prediction can be tested in PowerShell:
-powershell
-Copy code
-Invoke-RestMethod -Uri http://localhost:8080/predict -Method POST -ContentType "application/json" -Body '{"text":"The mayor is ruining our city!"}'
-If a valid prediction is returned, the smoke test passes.
-
-Dataset Checks: Verify that the input CSV is complete and consistent:
-
-python
-Copy code
+```
+Dataset Checks
+Verify CSV completeness and valid labels:
+```python
 import pandas as pd
 df = pd.read_csv("./assets/opinion_dataset.csv")
-print(df.isnull().sum())          # Check for missing values
-print(df['label'].unique())       # Ensure only valid labels are present
-Minimal Automated Validation: Confirm that the trained model outputs reasonable predictions:
-
-python
-Copy code
+print(df.isnull().sum())
+print(df['label'].unique())
+```
+Minimal Automated Validation
+Check model predictions:
+```python
 from joblib import load
 pipeline = load("./assets/model.joblib")
 
@@ -74,7 +66,7 @@ for text in examples:
     pred = pipeline.predict([text])
     prob = pipeline.predict_proba([text])
     print(f"Text: {text} | Prediction: {pred[0]} | Probabilities: {prob[0]}")
-These checks ensure that the pipeline trains, the API responds, the dataset is valid, and predictions are reasonable.
+```
 # What's Next
 While the current Bias Detector demonstrates the core pipeline, several improvements and extensions are possible and could be done in the future:
 - Model Improvements: Experiment with larger datasets, different text embeddings, or more advanced classifiers to improve accuracy and reduce misclassifications.
@@ -84,6 +76,7 @@ While the current Bias Detector demonstrates the core pipeline, several improvem
 Github Repo: https://github.com/hbz4cf/bias-detector
 
 Cloud Deployment: https://bias-detector-2.onrender.com (see 'How to Run' Section for use)
+
 
 
 

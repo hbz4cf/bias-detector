@@ -10,13 +10,18 @@ The project uses a curated opinion dataset stored in assets/opinion_dataset.csv 
 # How to Run (Local)
 Run the Bias Detector locally using Docker. Make sure Docker is installed and `.env` is configured.
 
+```powershell
+git clone https://github.com/hbz4cf/bias-detector
+```
+
 Powershell:
 ```powershell
-Invoke-RestMethod -Uri http://localhost:8080/predict -Method POST -ContentType "application/json" -Body '{"text":"The mayor is ruining our city!"}'
+Invoke-RestMethod -Uri "https://bias-detector-3.onrender.com/predict" -Method POST -ContentType "application/json" -Body '{"text":"The mayor is ruining our city!"}'
 ```
 Linux/macOS terminal:
 ```powershell
-curl -X POST http://localhost:8080/predict -H "Content-Type: application/json" -d '{"text":"The mayor is ruining our city!"}'
+curl -X POST "https://bias-detector-3.onrender.com/predict" -H "Content-Type: application/json" -d '{"text":"The mayor is ruining our city!"}'
+
 ```
 # Design Decicions
 ## Why This Concept?
@@ -75,7 +80,6 @@ While the current Bias Detector demonstrates the core pipeline, several improvem
 # Links
 Github Repo: https://github.com/hbz4cf/bias-detector
 
-Cloud Deployment: https://bias-detector-2.onrender.com (see 'How to Run' Section for use)
 
 
 
